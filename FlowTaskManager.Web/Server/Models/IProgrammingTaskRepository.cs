@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Server.Models
 {
-    public interface ITaskRepository
+    public interface IProgrammingTaskRepository
     {
-        Task<IEnumerable<ProgrammingTask>> GetTasks();
+        Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
     }
 }
