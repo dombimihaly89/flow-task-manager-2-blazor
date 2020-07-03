@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowTaskManager.Web.Server", "FlowTaskManager.Web\Server\FlowTaskManager.Web.Server.csproj", "{A122C430-A9BB-4B2A-B549-7CD58FBCB023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowTaskManager.Web.Server", "FlowTaskManager.Web\Server\FlowTaskManager.Web.Server.csproj", "{A122C430-A9BB-4B2A-B549-7CD58FBCB023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowTaskManager.Web.Client", "FlowTaskManager.Web\Client\FlowTaskManager.Web.Client.csproj", "{878DDFA9-905A-423C-AC7D-EB24D92D6A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowTaskManager.Web.Client", "FlowTaskManager.Web\Client\FlowTaskManager.Web.Client.csproj", "{878DDFA9-905A-423C-AC7D-EB24D92D6A29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowTaskManager.Web.Shared", "FlowTaskManager.Web\Shared\FlowTaskManager.Web.Shared.csproj", "{44C532B0-099B-484C-92B2-E57CFA15920D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowTaskManager.Web.Shared", "FlowTaskManager.Web\Shared\FlowTaskManager.Web.Shared.csproj", "{44C532B0-099B-484C-92B2-E57CFA15920D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
