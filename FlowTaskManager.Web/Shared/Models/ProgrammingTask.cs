@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FlowTaskManager.Web.Shared.Models
 {
-    public class Task
+    public class ProgrammingTask
     {
         public int Id { get; set; }
         public Type Type { get; set; }

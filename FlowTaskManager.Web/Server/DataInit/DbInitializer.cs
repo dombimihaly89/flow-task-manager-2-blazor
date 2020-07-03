@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Task = FlowTaskManager.Web.Shared.Models.Task;
+using ProgrammingTask = FlowTaskManager.Web.Shared.Models.ProgrammingTask;
 using Type = FlowTaskManager.Web.Shared.Models.Type;
 
 namespace FlowTaskManager.Web.Server.DataInit
@@ -53,9 +53,9 @@ namespace FlowTaskManager.Web.Server.DataInit
             dbContext.Users.AddRange(users);
             dbContext.SaveChanges();
 
-            var tasks = new Task[]
+            var programmingTasks = new ProgrammingTask[]
             {
-                new Task
+                new ProgrammingTask
                 {
                     Type = Type.Java,
                     Title = "Palindrom",
@@ -65,7 +65,7 @@ namespace FlowTaskManager.Web.Server.DataInit
                     UpdatedAt = null,
                     UserId = 2,
                 },
-                new Task
+                new ProgrammingTask
                 {
                     Type = Type.Javascript,
                     Title = "Hello World",
@@ -75,7 +75,7 @@ namespace FlowTaskManager.Web.Server.DataInit
                     UpdatedAt = null,
                     UserId = 3,
                 },
-                new Task
+                new ProgrammingTask
                 {
                     Type = Type.Spring,
                     Title = "Bookstore",
@@ -87,7 +87,7 @@ namespace FlowTaskManager.Web.Server.DataInit
                 }
             };
 
-            dbContext.Tasks.AddRange(tasks);
+            dbContext.ProgrammingTasks.AddRange(programmingTasks);
             dbContext.SaveChanges();
         }
     }

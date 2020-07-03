@@ -13,7 +13,7 @@ namespace FlowTaskManager.Web.Shared.Models
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Role Role { get; set; }
-        public ICollection<Task> Tasks { get; set; }
+        public ICollection<ProgrammingTask> Tasks { get; set; }
     }
     public enum Role
     {
