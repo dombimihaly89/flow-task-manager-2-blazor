@@ -11,11 +11,11 @@ namespace FlowTaskManager.Web.Server.DataInit
 {
     public class DbInitializer
     {
-        public static void Initialize(AppDbContext context)
+        public static void Initialize(AppDbContext dbContext)
         {
-            context.Database.EnsureCreated();
+            dbContext.Database.EnsureCreated();
 
-            if (context.Users.Any())
+            if (dbContext.Users.Any())
             {
                 return;
             }
@@ -50,8 +50,8 @@ namespace FlowTaskManager.Web.Server.DataInit
                 }
             };
 
-            context.Users.AddRange(users);
-            context.SaveChanges();
+            dbContext.Users.AddRange(users);
+            dbContext.SaveChanges();
 
             var tasks = new Task[]
             {
@@ -87,8 +87,8 @@ namespace FlowTaskManager.Web.Server.DataInit
                 }
             };
 
-            context.Tasks.AddRange(tasks);
-            context.SaveChanges();
+            dbContext.Tasks.AddRange(tasks);
+            dbContext.SaveChanges();
         }
     }
 }

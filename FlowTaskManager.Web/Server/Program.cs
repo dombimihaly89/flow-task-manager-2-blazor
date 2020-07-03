@@ -32,8 +32,8 @@ namespace FlowTaskManager.Web.Server
 
                 try
                 {
-                    var context = services.GetRequiredService<AppDbContext>();
-                    DbInitializer.Initialize(context);
+                    var dbContext = services.GetRequiredService<AppDbContext>();
+                    DbInitializer.Initialize(dbContext);
                 }
                 catch (Exception ex)
                 {

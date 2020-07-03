@@ -25,6 +25,7 @@ namespace FlowTaskManager.Web.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers();
             services.AddRazorPages();
         }
