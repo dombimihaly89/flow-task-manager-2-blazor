@@ -18,7 +18,7 @@ namespace FlowTaskManager.Web.Client.Services
         }
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
         {
-            return await httpClient.GetJsonAsync<ProgrammingTask[]>("api/programmingtasks");
+            return await httpClient.GetJsonAsync<ProgrammingTask[]>("api/tasks");
         }
     }
 }

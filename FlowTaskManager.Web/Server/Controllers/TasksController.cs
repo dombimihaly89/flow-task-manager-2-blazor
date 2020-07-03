@@ -11,11 +11,11 @@ namespace FlowTaskManager.Web.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProgrammingTasksController : ControllerBase
+    public class TasksController : ControllerBase
     {
         private readonly ITaskService taskService;
 
-        public ProgrammingTasksController(ITaskService taskService)
+        public TasksController(ITaskService taskService)
         {
             this.taskService = taskService;
         }
