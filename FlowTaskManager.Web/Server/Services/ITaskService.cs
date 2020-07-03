@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlowTaskManager.Web.Server.Models
+namespace FlowTaskManager.Web.Server.Services
 {
-    public interface IProgrammingTaskRepository
+    public interface ITaskService
     {
         Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
     }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Server.Models
 {
-    public class ProgrammingTaskRepository : IProgrammingTaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly AppDbContext dbContext;
 
-        public ProgrammingTaskRepository(AppDbContext dbContext)
+        public TaskRepository(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

@@ -1,6 +1,15 @@
 ﻿@inherits DisplayTaskBase
-<h3>DisplayTask</h3>
 
-@code {
-
-}
+<div class="card text-center">
+    <div class="card-header">
+        @Task.Type
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Task.Title</h5>
+        <p class="card-text">@Task.Content</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>

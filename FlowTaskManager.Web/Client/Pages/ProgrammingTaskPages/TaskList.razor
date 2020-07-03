@@ -5,6 +5,8 @@
 
 @if(Tasks != null)
 {
-    <p>@Tasks[0].Title</p>
+    foreach(var task in Tasks)
+    {
+        <DisplayTask Task="task"></DisplayTask>
+    }
 }
-

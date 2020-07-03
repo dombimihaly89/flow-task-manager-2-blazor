@@ -28,8 +28,8 @@ namespace FlowTaskManager.Web.Server
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IProgrammingTaskRepository, ProgrammingTaskRepository>();
-            services.AddScoped<IProgrammingTaskService, ProgrammingTaskService>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ITaskService, TaskService>();
             services.AddControllers();
             services.AddRazorPages();
         }

@@ -13,9 +13,9 @@ namespace FlowTaskManager.Web.Server.Controllers
     [ApiController]
     public class ProgrammingTasksController : ControllerBase
     {
-        private readonly IProgrammingTaskService programmingTaskService;
+        private readonly ITaskService programmingTaskService;
 
-        public ProgrammingTasksController(IProgrammingTaskService programmingTaskService)
+        public ProgrammingTasksController(ITaskService programmingTaskService)
         {
             this.programmingTaskService = programmingTaskService;
         }

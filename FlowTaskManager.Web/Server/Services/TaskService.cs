@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Server.Services
 {
-    public class ProgrammingTaskService : IProgrammingTaskService
+    public class TaskService : ITaskService
     {
-        private readonly IProgrammingTaskRepository programmingTaskRepository;
+        private readonly ITaskRepository programmingTaskRepository;
 
-        public ProgrammingTaskService(IProgrammingTaskRepository programmingTaskRepository)
+        public TaskService(ITaskRepository programmingTaskRepository)
         {
             this.programmingTaskRepository = programmingTaskRepository;
         }
