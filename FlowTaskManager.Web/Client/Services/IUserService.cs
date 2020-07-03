@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Client.Services
 {
-    interface IUserService
+    public interface IUserService
     {
         Task<IEnumerable<User>> GetUsers();
     }

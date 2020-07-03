@@ -1,5 +1,7 @@
-﻿<h3>Component</h3>
+﻿@page "/users"
+@inherits UserListBase
 
-@code {
-
+@if (Users != null)
+{
+<h3>@Users[0].FirstName</h3>
 }
