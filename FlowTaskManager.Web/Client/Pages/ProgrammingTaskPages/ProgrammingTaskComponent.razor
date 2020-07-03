@@ -1,0 +1,10 @@
+﻿@page "/tasks"
+@inherits ProgrammingTaskBase
+
+<h3>Tasks</h3>
+
+@if(Tasks != null)
+{
+    <p>@Tasks[0].Title</p>
+}
+

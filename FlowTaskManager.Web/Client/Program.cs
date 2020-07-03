@@ -17,6 +17,7 @@ namespace FlowTaskManager.Web.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.Services.AddSingleton<IUserService, UserService>();
+            builder.Services.AddSingleton<IProgrammingTaskService, ProgrammingTaskService>();
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });

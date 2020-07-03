@@ -16,6 +16,11 @@
                     Users
                 </NavLink>
             </li>
+            <li class="nav-item">
+                <NavLink class="nav-link text-dark" href="/tasks" @onclick="HandleClickTasks" Match="NavLinkMatch.All">
+                    Tasks
+                </NavLink>
+            </li>
         </ul>
     </div>
 </nav>
@@ -32,6 +37,11 @@
     void HandleClickUsers()
     {
         NavigationManager.NavigateTo("/users");
+    }
+
+    void HandleClickTasks()
+    {
+        NavigationManager.NavigateTo("/tasks");
     }
 
     void ToggleNavBar()
