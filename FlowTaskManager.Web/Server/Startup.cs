@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System.Linq;
 using FlowTaskManager.Web.Server.Models;
 using Microsoft.EntityFrameworkCore;
+using FlowTaskManager.Web.Server.Services;
 
 namespace FlowTaskManager.Web.Server
 {
@@ -26,6 +27,7 @@ namespace FlowTaskManager.Web.Server
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddControllers();
             services.AddRazorPages();
         }
