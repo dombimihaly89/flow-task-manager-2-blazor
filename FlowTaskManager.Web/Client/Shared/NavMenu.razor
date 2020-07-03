@@ -1,37 +1,41 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">FlowTaskManager.Web</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+﻿<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <a class="navbar-brand" href="#">Flow Task Manager</a>
+    <button @onclick="ToggleNavBar" class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
-</div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
+    <div @onclick="ToggleNavBar" class="@NavBarClass" id="navbarSupportedContent">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <NavLink class="nav-link text-dark" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link text-dark" href="/users" @onclick="HandleClickUsers" Match="NavLinkMatch.All">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Users
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 @code {
-    private bool collapseNavMenu = true;
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+    bool collapseNavbar = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse ";
 
-    private void ToggleNavMenu()
+    string NavBarClass => baseMenuClass + (collapseNavbar ? "collapse" : "");
+
+    void HandleClickUsers()
     {
-        collapseNavMenu = !collapseNavMenu;
+        NavigationManager.NavigateTo("/users");
+    }
+
+    void ToggleNavBar()
+    {
+        collapseNavbar = !collapseNavbar;
     }
 }
