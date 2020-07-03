@@ -13,17 +13,17 @@ namespace FlowTaskManager.Web.Server.Controllers
     [ApiController]
     public class ProgrammingTasksController : ControllerBase
     {
-        private readonly ITaskService programmingTaskService;
+        private readonly ITaskService taskService;
 
-        public ProgrammingTasksController(ITaskService programmingTaskService)
+        public ProgrammingTasksController(ITaskService taskService)
         {
-            this.programmingTaskService = programmingTaskService;
+            this.taskService = taskService;
         }
 
         [HttpGet]
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
         {
-            return await programmingTaskService.GetProgrammingTasks();
+            return await taskService.GetProgrammingTasks();
         }
     }
 }
