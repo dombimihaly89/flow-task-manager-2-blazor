@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Client.Services
 {
-    public class ProgrammingTaskService : IProgrammingTaskService
+    public class TaskService : ITaskService
     {
         private readonly HttpClient httpClient;
 
-        public ProgrammingTaskService(HttpClient httpClient)
+        public TaskService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }

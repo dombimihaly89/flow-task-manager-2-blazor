@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Client.Pages.ProgrammingTaskPages
 {
-    public class ProgrammingTaskBase : ComponentBase
+    public class TaskListBase : ComponentBase
     {
         [Inject]
-        private IProgrammingTaskService ProgrammingTaskService { get; set; }
+        private ITaskService ProgrammingTaskService { get; set; }
 
         public List<ProgrammingTask> Tasks { get; set; }
 

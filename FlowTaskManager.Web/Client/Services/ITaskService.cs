@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlowTaskManager.Web.Client.Services
 {
-    public interface IProgrammingTaskService
+    public interface ITaskService
     {
         Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
     }
