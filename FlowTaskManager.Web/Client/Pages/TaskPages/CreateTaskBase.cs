@@ -1,4 +1,5 @@
-﻿using FlowTaskManager.Web.Shared.Models;
+﻿using FlowTaskManager.Web.Client.Services;
+using FlowTaskManager.Web.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,13 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
     {
         [Inject]
         private NavigationManager NavigationManager { get; set; }
+        [Inject]
+        private TaskService TaskService { get; set; }
         public ProgrammingTask Task { get; set; } = new ProgrammingTask();
 
-        public void HandleValidSubmit()
+        public async void HandleValidSubmit()
         {
-
+            
         }
         public void ClickCancel()
         {
