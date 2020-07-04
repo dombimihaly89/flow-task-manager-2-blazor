@@ -9,15 +9,21 @@ namespace FlowTaskManager.Web.Server.Services
 {
     public class TaskService : ITaskService
     {
-        private readonly ITaskRepository programmingTaskRepository;
+        private readonly ITaskRepository taskRepository;
 
-        public TaskService(ITaskRepository programmingTaskRepository)
+        public TaskService(ITaskRepository taskRepository)
         {
-            this.programmingTaskRepository = programmingTaskRepository;
+            this.taskRepository = taskRepository;
         }
+
+        public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
+        {
+            return await taskRepository.CreateProgrammingTask(task);
+        }
+
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
         {
-            return await programmingTaskRepository.GetProgrammingTasks();
+            return await taskRepository.GetProgrammingTasks();
         }
     }
 }

@@ -21,9 +21,38 @@ namespace FlowTaskManager.Web.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<ActionResult<IEnumerable<ProgrammingTask>>> GetProgrammingTasks()
         {
-            return await taskService.GetProgrammingTasks();
+            try
+            {
+                return Ok(await taskService.GetProgrammingTasks());
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ProgrammingTask>> CreateProgrammingTask(ProgrammingTask task)
+        {
+            try
+            {
+                if (task == null)
+                {
+                    return BadRequest("Task cannot be null");
+                }
+                var createdTask = await taskService.CreateProgrammingTask(task);
+                if (createdTask != null)
+                {
+                    return CreatedAtAction(nameof(CreateProgrammingTask), new { taskId = createdTask.Id }, createdTask);
+                }
+                return BadRequest("Couldn't save the employee becuse it already had an ID.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
         }
     }
 }

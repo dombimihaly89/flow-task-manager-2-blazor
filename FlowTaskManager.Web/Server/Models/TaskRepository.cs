@@ -16,6 +16,17 @@ namespace FlowTaskManager.Web.Server.Models
             this.dbContext = dbContext;
         }
 
+        public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
+        {
+            if (task.Id == 0)
+            {
+                var result = await dbContext.ProgrammingTasks.AddAsync(task);
+                await dbContext.SaveChangesAsync();
+                return result.Entity;
+            }
+            return null;
+        }
+
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
         {
             return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)

@@ -12,7 +12,7 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
         [Inject]
         private NavigationManager NavigationManager { get; set; }
         [Inject]
-        private TaskService TaskService { get; set; }
+        private ITaskService TaskService { get; set; }
         public ProgrammingTask Task { get; set; } = new ProgrammingTask();
 
         public async void HandleValidSubmit()

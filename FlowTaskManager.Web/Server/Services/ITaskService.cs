@@ -9,5 +9,6 @@ namespace FlowTaskManager.Web.Server.Services
     public interface ITaskService
     {
         Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
+        Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task);
     }
 }
