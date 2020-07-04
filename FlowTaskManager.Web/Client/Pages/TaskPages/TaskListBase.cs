@@ -12,12 +12,19 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
     {
         [Inject]
         private ITaskService ProgrammingTaskService { get; set; }
+        [Inject]
+        private NavigationManager NavigationManager { get; set; }
 
         public List<ProgrammingTask> Tasks { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
             Tasks = new List<ProgrammingTask>((await ProgrammingTaskService.GetProgrammingTasks()));
+        }
+
+        protected void ClickCreateTask()
+        {
+            NavigationManager.NavigateTo("/tasks/create");
         }
     }
 }
