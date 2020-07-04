@@ -1,14 +1,22 @@
 ﻿@inherits DisplayTaskBase
 
-<div class="card text-center">
-    <div class="card-header">
-        <img src="Images/java.jpg" class="card-img-top smallImage" />
-        @Task.Type
+<div class="card text-center mb-5">
+    <div class="card-header bg-info text-white">
+        <div class="row align-items-center">
+            <div class="col-3">
+                <div class="row align-items-center">
+                    <img src="@($"Images/{Task.Type.ToString().ToLower()}.jpg")" class="card-img-top task-type-card-image img-fluid img-thumbnail float-left" />
+                    <p class="mb-0">@Task.Type</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <h5 class="card-title mb-0 task-title">@Task.Title</h5>
+            </div>
+        </div>
     </div>
+    
     <div class="card-body">
-        <h5 class="card-title">@Task.Title</h5>
         <p class="card-text">@Task.Content</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     <div class="card-footer text-muted">
         By: @Task.User.UserName

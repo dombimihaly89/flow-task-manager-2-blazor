@@ -1,8 +1,19 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-.smallImage {
-    height: 30px;
+@font-face {
+    font-family: 'Amatic SC';
+    src: url(../Fonts/AmaticSC-Bold.ttf) format("truetype");
+}
+
+.task-title {
+    font-family: "Amatic SC";
+    font-size: 2rem;
+}
+
+.task-type-card-image {
+    max-height: 50px;
     width: auto;
+    margin-right: 12px;
 }
 
 a.navbar-brand {
