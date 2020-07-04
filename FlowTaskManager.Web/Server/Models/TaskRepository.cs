@@ -19,7 +19,7 @@ namespace FlowTaskManager.Web.Server.Models
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
         {
             return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
-                .ToListAsync();
+                .OrderBy(programmingTask => programmingTask.CreatedAt).ToListAsync();
         }
     }
 }
