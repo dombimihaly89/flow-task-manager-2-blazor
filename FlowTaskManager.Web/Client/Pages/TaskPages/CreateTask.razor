@@ -1,3 +1,17 @@
 ﻿@page "/tasks/create"
 @inherits CreateTaskBase
-<h3>CreateTask</h3>
+
+<EditForm Model="@Task" OnInvalidSubmit="HandleValidSubmit">
+    <h3>CreateTask</h3>
+    <hr />
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">
+            Title:
+        </label>
+        <div class="col-sm-3">
+            <InputText id="title" class="form-control" placeholder="Title" @bind-Value="Task.Title" />
+
+        </div>
+    </div>
+</EditForm>
+
