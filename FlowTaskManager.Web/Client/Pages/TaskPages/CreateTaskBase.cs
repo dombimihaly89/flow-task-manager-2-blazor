@@ -15,9 +15,12 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
         private ITaskService TaskService { get; set; }
         public ProgrammingTask Task { get; set; } = new ProgrammingTask();
 
-        public async void HandleValidSubmit()
+        public async void HandleSubmit()
         {
-            
+            // For test reasons we save tasks to the user with id 3.
+            Task.UserId = 3;
+            await TaskService.CreateProgrammingTask(Task);
+            NavigationManager.NavigateTo("/tasks");
         }
         public void ClickCancel()
         {
