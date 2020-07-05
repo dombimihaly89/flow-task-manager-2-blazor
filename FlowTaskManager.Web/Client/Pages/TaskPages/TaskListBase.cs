@@ -26,5 +26,10 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
         {
             NavigationManager.NavigateTo("/tasks/create");
         }
+
+        protected async Task TaskDeleted()
+        {
+            Tasks = (await ProgrammingTaskService.GetProgrammingTasks()).ToList() ;
+        }
     }
 }

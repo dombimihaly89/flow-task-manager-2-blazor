@@ -1,4 +1,5 @@
 ﻿@inherits DisplayTaskBase
+@using FlowTaskManager.Web.Client.Modals
 
 <div class="card text-center mb-5 border border-dark rounded">
     <div class="card-header bg-info text-white">
@@ -36,3 +37,4 @@
         By: @Task.User.UserName
     </div>
 </div>
+<Confirmation ModalClick="DeleteModalResult" @ref="DeleteConfirmation"></Confirmation>
