@@ -55,12 +55,11 @@ namespace FlowTaskManager.Web.Server.Controllers
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteProgrammingTask(int id)
         {
             try
             {
-
                 var deletedTask = await taskService.DeleteProgrammingTask(id);
                 if (deletedTask == null)
                 {
