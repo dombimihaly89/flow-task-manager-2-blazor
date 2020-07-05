@@ -15,16 +15,20 @@ namespace FlowTaskManager.Web.Server.Services
         {
             this.taskRepository = taskRepository;
         }
-
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        {
+            return await taskRepository.GetProgrammingTasks();
+        }
         public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
         {
             task.CreatedAt = DateTime.Now;
             return await taskRepository.CreateProgrammingTask(task);
         }
-
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<ProgrammingTask> DeleteProgrammingTask(int id)
         {
-            return await taskRepository.GetProgrammingTasks();
+            return await taskRepository.DeleteProgrammingTask(id);
         }
+
+        
     }
 }

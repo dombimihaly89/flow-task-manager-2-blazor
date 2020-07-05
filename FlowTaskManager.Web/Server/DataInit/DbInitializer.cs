@@ -15,7 +15,7 @@ namespace FlowTaskManager.Web.Server.DataInit
         {
             dbContext.Database.EnsureCreated();
 
-            if (dbContext.Users.Any())
+            if (dbContext.ProgrammingTasks.Any())
             {
                 return;
             }

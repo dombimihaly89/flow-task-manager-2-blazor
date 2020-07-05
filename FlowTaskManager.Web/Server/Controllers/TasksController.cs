@@ -54,5 +54,29 @@ namespace FlowTaskManager.Web.Server.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult> DeleteProgrammingTask(int id)
+        {
+            try
+            {
+
+                var deletedTask = await taskService.DeleteProgrammingTask(id);
+                if (deletedTask == null)
+                {
+                    return NotFound($"User with id {id} is not found in the database.");
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error deleting Task from the database.");
+            }
+
+        }
     }
 }

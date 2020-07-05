@@ -16,6 +16,17 @@ namespace FlowTaskManager.Web.Server.Models
             this.dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        {
+            return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
+                .OrderByDescending(programmingTask => programmingTask.CreatedAt).ToListAsync();
+        }
+
+        public async Task<ProgrammingTask> GetProgrammingTask(int id)
+        {
+            return await dbContext.ProgrammingTasks.FirstOrDefaultAsync(task => task.Id == id);
+        }
+
         public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
         {
             if (task.Id == 0)
@@ -27,10 +38,15 @@ namespace FlowTaskManager.Web.Server.Models
             return null;
         }
 
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<ProgrammingTask> DeleteProgrammingTask(int id)
         {
-            return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
-                .OrderByDescending(programmingTask => programmingTask.CreatedAt).ToListAsync();
+            var taskToDelete = await GetProgrammingTask(id);
+            if (taskToDelete != null)
+            {
+                dbContext.ProgrammingTasks.Remove(taskToDelete);
+                await dbContext.SaveChangesAsync();
+            }
+            return taskToDelete;
         }
     }
 }
