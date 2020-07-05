@@ -18,6 +18,7 @@ namespace FlowTaskManager.Web.Server.Services
 
         public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
         {
+            task.CreatedAt = DateTime.Now;
             return await taskRepository.CreateProgrammingTask(task);
         }
 
