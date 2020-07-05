@@ -25,5 +25,10 @@ namespace FlowTaskManager.Web.Client.Services
         {
             return await httpClient.PostJsonAsync<ProgrammingTask>("api/tasks", task);
         }
+
+        public async Task DeleteProgrammingTask(int id)
+        {
+            await httpClient.DeleteAsync($"api/tasks/{id}");
+        }
     }
 }
