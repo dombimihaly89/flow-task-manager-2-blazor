@@ -11,6 +11,7 @@ namespace FlowTaskManager.Web.Server.Models
         Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
         Task<ProgrammingTask> GetProgrammingTask(int id);
         Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task);
+        Task<ProgrammingTask> UpdateProgrammingTask(ProgrammingTask task);
         Task<ProgrammingTask> DeleteProgrammingTask(int id);
         
     }

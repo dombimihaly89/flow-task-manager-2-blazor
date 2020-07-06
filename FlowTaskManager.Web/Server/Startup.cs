@@ -9,6 +9,7 @@ using System.Linq;
 using FlowTaskManager.Web.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using FlowTaskManager.Web.Server.Services;
+using AutoMapper;
 
 namespace FlowTaskManager.Web.Server
 {
@@ -33,6 +34,7 @@ namespace FlowTaskManager.Web.Server
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddAutoMapper(typeof(Startup));
             services.AddRazorPages();
         }
 

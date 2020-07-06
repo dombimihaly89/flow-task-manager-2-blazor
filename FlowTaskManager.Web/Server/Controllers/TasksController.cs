@@ -55,6 +55,28 @@ namespace FlowTaskManager.Web.Server.Controllers
             }
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ProgrammingTask>> UpdateProgrammingTask(int id, ProgrammingTask task)
+        {
+            try
+            {
+                if (id != task.Id)
+                {
+                    BadRequest("Task ID mismatch.");
+                }
+                var updatedUser = await taskService.UpdateProgrammingTask(id, task);
+                if (updatedUser == null)
+                {
+                    NotFound($"Task with ID {id} is not in the database");
+                }
+                return updatedUser;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteProgrammingTask(int id)
         {

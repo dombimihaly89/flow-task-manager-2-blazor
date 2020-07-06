@@ -29,13 +29,15 @@ namespace FlowTaskManager.Web.Server.Models
 
         public async Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task)
         {
-            if (task.Id == 0)
-            {
-                var result = await dbContext.ProgrammingTasks.AddAsync(task);
-                await dbContext.SaveChangesAsync();
-                return result.Entity;
-            }
-            return null;
+            var result = await dbContext.ProgrammingTasks.AddAsync(task);
+            await dbContext.SaveChangesAsync();
+            return result.Entity;
+        }
+
+        public async Task<ProgrammingTask> UpdateProgrammingTask(ProgrammingTask task)
+        {
+            await dbContext.SaveChangesAsync();
+            return task;
         }
 
         public async Task<ProgrammingTask> DeleteProgrammingTask(int id)
