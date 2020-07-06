@@ -21,6 +21,11 @@ namespace FlowTaskManager.Web.Client.Services
             return await httpClient.GetJsonAsync<ProgrammingTask[]>("api/tasks");
         }
 
+        public async Task<ProgrammingTask> UpdateProgrammingTask(int id, ProgrammingTask task)
+        {
+            return await httpClient.PutJsonAsync<ProgrammingTask>($"api/tasks/{id}", task);
+        }
+
         public async Task<ProgrammingTask> CreateProgrammingTask( ProgrammingTask task)
         {
             return await httpClient.PostJsonAsync<ProgrammingTask>("api/tasks", task);

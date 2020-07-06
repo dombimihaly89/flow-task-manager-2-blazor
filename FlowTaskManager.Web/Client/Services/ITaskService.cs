@@ -10,6 +10,7 @@ namespace FlowTaskManager.Web.Client.Services
     {
         Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks();
         Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task);
+        Task<ProgrammingTask> UpdateProgrammingTask(int id, ProgrammingTask);
         Task DeleteProgrammingTask(int id);
     }
 }
