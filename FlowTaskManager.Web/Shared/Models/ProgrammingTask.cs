@@ -13,13 +13,13 @@ namespace FlowTaskManager.Web.Shared.Models
         public Type Type { get; set; }
 
         [Required(ErrorMessage = "Title must be provided.")]
-        [MinLength(3)]
-        [MaxLength(50)]
+        [MinLength(3, ErrorMessage = "Title must be between 3 and 50 characters")]
+        [MaxLength(50, ErrorMessage = "Title must be between 3 and 50 characters")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Content must be provided.")]
-        [MinLength(10)]
-        [MaxLength(1000)] 
+        [MinLength(10, ErrorMessage = "Content must be between 10 and 1000 characters")]
+        [MaxLength(1000, ErrorMessage = "Content must be between 10 and 1000 characters")] 
         public string Content { get; set; }
 
         [Required(ErrorMessage = "Difficulty must be provided.")]
