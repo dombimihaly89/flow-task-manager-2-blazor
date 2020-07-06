@@ -31,6 +31,11 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
             DeleteConfirmation.Show();
         }
 
+        public async void ClickUpdate()
+        {
+            NavigationManager.NavigateTo($"/tasks/create/{Task.Id}");
+        }
+
         public async void DeleteModalResult(bool actionValue)
         {
             if (actionValue)

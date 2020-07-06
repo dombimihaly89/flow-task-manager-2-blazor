@@ -33,6 +33,24 @@ namespace FlowTaskManager.Web.Server.Controllers
             }
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ProgrammingTask>> GetProgrammingTask(int id)
+        {
+            try
+            {
+                var task = await taskService.GetProgrammingTask(id);
+                if (task == null)
+                {
+                    return NotFound($"User with ID {id} is not present in the Database");
+                }
+                return task;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<ProgrammingTask>> CreateProgrammingTask(ProgrammingTask task)
         {
