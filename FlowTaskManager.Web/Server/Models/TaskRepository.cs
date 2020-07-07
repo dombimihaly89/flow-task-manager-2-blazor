@@ -16,10 +16,9 @@ namespace FlowTaskManager.Web.Server.Models
             this.dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page)
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage)
         {
-            const int tasksOnPage = 3;
-            int allTasks = dbContext.ProgrammingTasks.Count();
+            int allTasks = await CountAllTasks();
             return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
                 .OrderByDescending(programmingTask => programmingTask.CreatedAt)
                 .Skip((page - 1) * tasksOnPage)
@@ -54,6 +53,11 @@ namespace FlowTaskManager.Web.Server.Models
                 await dbContext.SaveChangesAsync();
             }
             return taskToDelete;
+        }
+
+        public async Task<int> CountAllTasks()
+        {
+            return await dbContext.ProgrammingTasks.CountAsync();
         }
     }
 }

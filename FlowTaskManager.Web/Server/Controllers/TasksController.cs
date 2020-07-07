@@ -30,7 +30,7 @@ namespace FlowTaskManager.Web.Server.Controllers
                 {
                     BadRequest("The value that passed to page is not a number");
                 }
-                return Ok(await taskService.GetProgrammingTasks(pageNumber));
+                return Ok(await taskService.GetProgrammingTasks(pageNumber, 3));
             }
             catch (Exception)
             {

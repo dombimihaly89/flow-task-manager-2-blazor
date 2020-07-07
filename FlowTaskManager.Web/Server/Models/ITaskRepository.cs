@@ -8,11 +8,14 @@ namespace FlowTaskManager.Web.Server.Models
 {
     public interface ITaskRepository
     {
-        Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page);
+        Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage);
         Task<ProgrammingTask> GetProgrammingTask(int id);
         Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task);
         Task<ProgrammingTask> UpdateProgrammingTask(ProgrammingTask task);
         Task<ProgrammingTask> DeleteProgrammingTask(int id);
-        
+        Task<int> CountAllTasks();
+
+
+
     }
 }

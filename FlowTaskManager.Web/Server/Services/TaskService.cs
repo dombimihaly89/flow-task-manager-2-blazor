@@ -18,9 +18,14 @@ namespace FlowTaskManager.Web.Server.Services
             this.taskRepository = taskRepository;
             this.mapper = mapper;
         }
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page)
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage)
         {
-            return await taskRepository.GetProgrammingTasks(page);
+            int allTasks = await taskRepository.CountAllTasks();
+            if (page > (allTasks / tasksOnPage + 1) || page < 1)
+            {
+                throw new Exception($"Page number must be between 1 and {allTasks}");
+            }
+            return await taskRepository.GetProgrammingTasks(page, tasksOnPage);
         }
 
         public async Task<ProgrammingTask> GetProgrammingTask(int id)
