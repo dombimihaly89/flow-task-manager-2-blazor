@@ -22,7 +22,7 @@ namespace FlowTaskManager.Web.Server.Services
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage)
         {
             int allTasks = await taskRepository.CountAllTasks();
-            int lastPage = allTasks / tasksOnPage + 1;
+            int lastPage = (allTasks % tasksOnPage) == 0 ? (allTasks / tasksOnPage) : (allTasks / tasksOnPage) + 1;
             if (page > lastPage || page < 1)
             {
                 throw new PageOutOfBoundException(lastPage);
@@ -63,6 +63,9 @@ namespace FlowTaskManager.Web.Server.Services
             return await taskRepository.DeleteProgrammingTask(id);
         }
 
-        
+        public async Task<int> CountAllTasks()
+        {
+            return await taskRepository.CountAllTasks();
+        }
     }
 }

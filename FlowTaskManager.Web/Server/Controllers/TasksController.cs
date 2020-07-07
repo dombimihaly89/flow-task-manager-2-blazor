@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FlowTaskManager.Web.Server.Exceptions;
 using FlowTaskManager.Web.Server.Services;
@@ -15,6 +16,7 @@ namespace FlowTaskManager.Web.Server.Controllers
     public class TasksController : ControllerBase
     {
         private readonly ITaskService taskService;
+        public const int tasksOnPage = 3;
 
         public TasksController(ITaskService taskService)
         {
@@ -31,7 +33,7 @@ namespace FlowTaskManager.Web.Server.Controllers
                 {
                     BadRequest("The value that passed to page is not a number");
                 }
-                return Ok(await taskService.GetProgrammingTasks(pageNumber, 3));
+                return Ok(await taskService.GetProgrammingTasks(pageNumber, tasksOnPage));
             }
             catch (PageOutOfBoundException e)
             {
@@ -54,6 +56,21 @@ namespace FlowTaskManager.Web.Server.Controllers
                     return NotFound($"User with ID {id} is not present in the Database");
                 }
                 return task;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
+        [HttpGet("{getLastPage}")]
+        public async Task<ActionResult<int>> GetLastPage()
+        {
+            try
+            {
+                int allTasks = await taskService.CountAllTasks();
+                int lastPage = (allTasks % tasksOnPage) == 0 ? (allTasks / tasksOnPage) : (allTasks / tasksOnPage) + 1;
+                return lastPage;
             }
             catch (Exception)
             {

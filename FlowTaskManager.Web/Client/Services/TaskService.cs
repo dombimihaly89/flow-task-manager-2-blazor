@@ -16,9 +16,9 @@ namespace FlowTaskManager.Web.Client.Services
         {
             this.httpClient = httpClient;
         }
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page)
         {
-            return await httpClient.GetJsonAsync<ProgrammingTask[]>("api/tasks");
+            return await httpClient.GetJsonAsync<ProgrammingTask[]>($"api/tasks?page={page}");
         }
 
         public async Task<ProgrammingTask> GetProgrammingTask(int id)
@@ -38,6 +38,11 @@ namespace FlowTaskManager.Web.Client.Services
         public async Task DeleteProgrammingTask(int id)
         {
             await httpClient.DeleteAsync($"api/tasks/{id}");
+        }
+
+        public async Task<int> GetLastPage()
+        {
+            return await httpClient.GetJsonAsync<int>("api/tasks/getlastpage");
         }
     }
 }

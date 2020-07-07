@@ -18,7 +18,6 @@ namespace FlowTaskManager.Web.Server.Models
 
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage)
         {
-            int allTasks = await CountAllTasks();
             return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
                 .OrderByDescending(programmingTask => programmingTask.CreatedAt)
                 .Skip((page - 1) * tasksOnPage)

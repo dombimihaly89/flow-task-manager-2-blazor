@@ -13,6 +13,7 @@ namespace FlowTaskManager.Web.Server.Services
         Task<ProgrammingTask> CreateProgrammingTask(ProgrammingTask task);
         Task<ProgrammingTask> UpdateProgrammingTask(int id, ProgrammingTask task);
         Task<ProgrammingTask> DeleteProgrammingTask(int id);
+        Task<int> CountAllTasks();
 
     }
 }
