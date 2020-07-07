@@ -19,11 +19,9 @@
 
     <nav aria-label="Page navigation">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li @onclick="@(() => MovePage("prev"))" class="page-item"><button disabled="@(1 == int.Parse(ActualPage))" class="page-link" href="#">Previous</button></li>
             <li class="page-item"><p class="page-link bg-warning">Actual Page : @(ActualPage)</p></li>
-            <li @onclick="NextPage" class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li @onclick="@(() => MovePage("next"))" class="page-item"><button disabled="@(LastPage == int.Parse(ActualPage))" class="page-link" href="#">Next</button></li>
         </ul>
     </nav>
 }
-
-

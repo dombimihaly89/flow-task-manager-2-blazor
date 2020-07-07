@@ -37,16 +37,20 @@ namespace FlowTaskManager.Web.Client.Pages.TaskPages
             Tasks = (await TaskService.GetProgrammingTasks(1)).ToList() ;
         }
 
-        protected async Task NextPage()
+        protected async Task MovePage(string direction)
         {
             LastPage = await TaskService.GetLastPage();
             int.TryParse(ActualPage, out int actualPage);
-            if (actualPage < LastPage)
+            if (direction.ToLower() == "next" && actualPage < LastPage)
             {
                 actualPage += 1;
             }
+            else if (direction.ToLower() == "prev" && actualPage > 1)
+            {
+                actualPage -= 1;
+            }
+            Tasks = (await TaskService.GetProgrammingTasks(actualPage)).ToList();
             NavigationManager.NavigateTo($"/tasks/{actualPage}/page");
-            // Tasks = (await TaskService.GetProgrammingTasks(ActualPage)).ToList();
         }
     }
 }
