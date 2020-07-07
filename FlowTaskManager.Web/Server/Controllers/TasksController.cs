@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlowTaskManager.Web.Server.Exceptions;
 using FlowTaskManager.Web.Server.Services;
 using FlowTaskManager.Web.Shared.Models;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +32,10 @@ namespace FlowTaskManager.Web.Server.Controllers
                     BadRequest("The value that passed to page is not a number");
                 }
                 return Ok(await taskService.GetProgrammingTasks(pageNumber, 3));
+            }
+            catch (PageOutOfBoundException e)
+            {
+                return BadRequest(e.Message);
             }
             catch (Exception)
             {

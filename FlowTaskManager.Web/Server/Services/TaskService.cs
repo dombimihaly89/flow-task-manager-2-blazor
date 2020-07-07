@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FlowTaskManager.Web.Server.Exceptions;
 using FlowTaskManager.Web.Server.Models;
 using FlowTaskManager.Web.Shared.Models;
 using System;
@@ -21,9 +22,10 @@ namespace FlowTaskManager.Web.Server.Services
         public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page, int tasksOnPage)
         {
             int allTasks = await taskRepository.CountAllTasks();
-            if (page > (allTasks / tasksOnPage + 1) || page < 1)
+            int lastPage = allTasks / tasksOnPage + 1;
+            if (page > lastPage || page < 1)
             {
-                throw new Exception($"Page number must be between 1 and {allTasks}");
+                throw new PageOutOfBoundException(lastPage);
             }
             return await taskRepository.GetProgrammingTasks(page, tasksOnPage);
         }
