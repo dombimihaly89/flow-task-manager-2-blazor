@@ -18,9 +18,9 @@ namespace FlowTaskManager.Web.Server.Services
             this.taskRepository = taskRepository;
             this.mapper = mapper;
         }
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page)
         {
-            return await taskRepository.GetProgrammingTasks();
+            return await taskRepository.GetProgrammingTasks(page);
         }
 
         public async Task<ProgrammingTask> GetProgrammingTask(int id)

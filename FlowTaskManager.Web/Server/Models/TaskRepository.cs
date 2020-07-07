@@ -16,10 +16,15 @@ namespace FlowTaskManager.Web.Server.Models
             this.dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks()
+        public async Task<IEnumerable<ProgrammingTask>> GetProgrammingTasks(int page)
         {
+            const int tasksOnPage = 3;
+            int allTasks = dbContext.ProgrammingTasks.Count();
             return await dbContext.ProgrammingTasks.Include(programmingTask => programmingTask.User)
-                .OrderByDescending(programmingTask => programmingTask.CreatedAt).ToListAsync();
+                .OrderByDescending(programmingTask => programmingTask.CreatedAt)
+                .Skip((page - 1) * tasksOnPage)
+                .Take(tasksOnPage)
+                .ToListAsync();
         }
 
         public async Task<ProgrammingTask> GetProgrammingTask(int id)

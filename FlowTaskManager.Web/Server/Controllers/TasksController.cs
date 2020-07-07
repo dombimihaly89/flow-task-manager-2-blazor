@@ -20,12 +20,17 @@ namespace FlowTaskManager.Web.Server.Controllers
             this.taskService = taskService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProgrammingTask>>> GetProgrammingTasks()
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<ProgrammingTask>>> GetProgrammingTasks(string page)
         {
             try
             {
-                return Ok(await taskService.GetProgrammingTasks());
+                bool successfulParse = int.TryParse(page, out int pageNumber);
+                if (!successfulParse)
+                {
+                    BadRequest("The value that passed to page is not a number");
+                }
+                return Ok(await taskService.GetProgrammingTasks(pageNumber));
             }
             catch (Exception)
             {
